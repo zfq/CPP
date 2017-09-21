@@ -7,15 +7,15 @@
 //
 
 #include <iostream>
-//#include "TestCase.hpp"
-#include "base/Person.hpp"
+// #include "testCase/TestCase.hpp"
+#include "model/Comment.hpp"
 
 int main(int argc, const char * argv[]) {
 	
-//	zfq::testRelpy();
-	std::cout << "Hello world!" << "\n";
-	zfq::Person p("张三", "13141187980", zfq::Male);
-	p.description();
+	// zfq::testRelpy();
+	
+    zfq::Comment com;
+
 	return 0;
 }
 
