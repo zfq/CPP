@@ -32,19 +32,51 @@ CCFLAGES = -o
 
 # ====测试model
 
-# objs = base/BaseObject.o utils/StringUtil.o model/Comment.o main.o
+# baseCs = $(notdir base/)
+# tmp := $(allBaseFiles:%.cpp=%.o)
+
+#base文件夹的所有的.o文件名称
+baseDirPath = base
+baseDirAllFiles := $(patsubst %.cpp,%.o,$(shell ls $(baseDirPath)))
+baseDirTmpObjs := $(filter %.o, $(baseDirAllFiles))
+baseDirAllObjs:=$(addprefix base/,$(baseDirTmpObjs))
+
+#utils文件夹的所有.o文件名称
+utilsDirPath = utils
+utilsDirAllFiles := $(patsubst %.cpp,%.o,$(shell ls $(utilsDirPath)))
+utilsDirTmpObjs := $(filter %.o, $(utilsDirAllFiles))
+utilsDirAllObjs:=$(addprefix utils/,$(utilsDirTmpObjs))
+
+#testCase文件夹的所有.o文件名称
+testCaseDirPath = testCase
+testCaseDirAllFiles := $(patsubst %.cpp,%.o,$(shell ls $(testCaseDirPath)))
+testCaseDirTmpObjs := $(filter %.o, $(testCaseDirAllFiles))
+testCaseDirAllObjs:=$(addprefix testCase/,$(testCaseDirTmpObjs))
+
+#model文件夹的所有.o文件名称
+modelDirPath = model
+modelDirAllFiles := $(patsubst %.cpp,%.o,$(shell ls $(modelDirPath)))
+modelDirTmpObjs := $(filter %.o, $(modelDirAllFiles))
+modelDirAllObjs:=$(addprefix model/,$(modelDirTmpObjs))
+
+objs = $(baseDirAllObjs) $(utilsDirAllObjs) $(modelDirAllObjs) $(testCaseDirAllObjs) main.o
+
+# objs := $(wildcard base/*.o) $(wildcard utils/*.o) $(wildcard model/*.o) main.o
+
+$(targetFileName) : modelMakefile testCaseMakefile $(objs)
+	g++ -o $@ $(filter %.o, $^)
 
 
-objs := $(wildcard base/*.o) $(wildcard utils/*.o) $(wildcard model/*.o) main.o
-
-$(targetFileName) : modelMakefile $(objs)
-	g++ $(objs) -o $(targetFileName)
-
+.PHONY:modelMakefile
 modelMakefile:
-	cd model; make -f model.mk
+	cd model; make -f model.mk;
+
+.PHONY:testCaseMakefile
+testCaseMakefile:
+	cd testCase; make -f testCase.mk
 
 main.o : main.cpp
 
 .PHONY: clean
 clean:
-	rm -rf *.o; rm -rf */*.o
+	rm -rf *.o; rm -rf */*.o;rm -rf $(targetFileName)

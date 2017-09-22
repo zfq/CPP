@@ -7,14 +7,13 @@
 //
 
 #include <iostream>
-// #include "testCase/TestCase.hpp"
-#include "model/Comment.hpp"
+#include "testCase/TestCase.hpp"
 
 int main(int argc, const char * argv[]) {
 	
-	// zfq::testRelpy();
+	zfq::testRelpy();
 	
-    zfq::Comment com;
+    // zfq::Comment com;
 
 	return 0;
 }

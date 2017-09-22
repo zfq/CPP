@@ -7,7 +7,7 @@
 //
 
 #include "TestCase.hpp"
-#include "../thirdParty/rapidjson/document.h"
+// #include "../thirdParty/rapidjson/document.h"
 #include "../model/DeliveryDriver.hpp"
 #include "../model/Restaurant.hpp"
 #include "../utils/StringUtil.hpp"
@@ -24,20 +24,20 @@ namespace zfq {
 	
 	void testJson()
 	{
-		const char *str = "[\"2011\", \"2012\", \"2013\"]";
-		rapidjson::Document d;
-		d.Parse(str);
-		if (d.HasParseError()) {
-			return;
-		}
+		// const char *str = "[\"2011\", \"2012\", \"2013\"]";
+		// rapidjson::Document d;
+		// d.Parse(str);
+		// if (d.HasParseError()) {
+		// 	return;
+		// }
 		
-		rapidjson::Value &v = d;
-		if (v.IsArray()) {
-			for(rapidjson::SizeType i = 0; i < v.Size(); i++) {
-				rapidjson::Value & tmpV = v[i];
-				std::cout << tmpV.GetString() << "\n";
-			}
-		}
+		// rapidjson::Value &v = d;
+		// if (v.IsArray()) {
+		// 	for(rapidjson::SizeType i = 0; i < v.Size(); i++) {
+		// 		rapidjson::Value & tmpV = v[i];
+		// 		std::cout << tmpV.GetString() << "\n";
+		// 	}
+		// }
 	}
 	
 	void testSplit()

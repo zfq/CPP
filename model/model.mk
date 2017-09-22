@@ -5,8 +5,11 @@ CPPFLAGS = -c -std=c++11
 
 all : baseMakefile utilsMakefile Comment.o DeliveryDriver.o Dish.o Order.o Reply.o Restaurant.o User.o
 
+.PHONY:baseMakefile
 baseMakefile:
 	cd ../base && make -f base.mk
+
+.PHONY:testCaseMakefile
 utilsMakefile:
 	cd ../utils && make -f utils.mk
 
