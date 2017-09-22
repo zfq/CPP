@@ -1,7 +1,7 @@
 targetFileName = foodDeliverySysterm
 CC = g++
 CCFLAGES = -o
-
+# LIBDIR = /usr/local/lib thirdParty/mySqlConn/lib
 
 # objects = BaseObject.o Person.o main.o
 # objects = testCaseMakefile
@@ -43,9 +43,9 @@ modelDirAllObjs:=$(addprefix model/,$(modelDirTmpObjs))
 objs = $(baseDirAllObjs) $(utilsDirAllObjs) $(modelDirAllObjs) $(testCaseDirAllObjs) main.o
 
 # objs := $(wildcard base/*.o) $(wildcard utils/*.o) $(wildcard model/*.o) main.o
-
+boostPath = thirdParty/boost
 $(targetFileName) : modelMakefile testCaseMakefile $(objs)
-	g++ -o $@ $(filter %.o, $^)
+	g++ -I $(boostPath) -o $@ $(filter %.o, $^)
 
 
 .PHONY:modelMakefile

@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[]) {
 	
-	zfq::testJson();
+	zfq::testConnectMysql();
 	
     // zfq::Comment com;
 

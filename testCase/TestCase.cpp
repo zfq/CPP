@@ -17,7 +17,8 @@
 #include "../model/Order.hpp"
 #include "../model/User.hpp"
 #include "../model/Dish.hpp"
-
+#include "../thirdParty/mySqlConn/include/mysql_driver.h"
+#include "../thirdParty/mySqlConn/include/mysql_connection.h"
 #include <iostream>
 #include <string>
 
@@ -150,6 +151,18 @@ namespace zfq {
 
 	void testConnectMysql()
 	{
+		// sql::mysql::MySQL_Driver *driver;
+		// sql::Connection *con;
 
+		// driver = sql::mysql::get_mysql_driver_instance();
+		// con = driver->connect("tcp://127.0.0.1:3306", "root", "123456");
+
+		// sql::Statement *stmt;
+		// stmt = con->createStatement();
+		// stmt->execute("USE " EXAMPLE_DB);
+		// stmt->execute("DROP TABLE IF EXISTS test");
+		// stmt->execute("CREATE TABLE test(id INT, label CHAR(1))");
+		// stmt->execute("INSERT INTO test(id, label) VALUES (1, 'a')");
+		// delete con;
 	}
 }
