@@ -10,25 +10,6 @@ CCFLAGES = -o
 # $(targetFileName) :  testCaseMakefile main.o
 # 	g++ $(objects) -o $(targetFileName)
 
-# $(targetFileName) :  testCase/TestCase.o main.o
-# 	g++ testCase/TestCase.o main.o -o $(targetFileName)
-
-# testCaseMakefile:
-# 	cd testCase; make -f testCase.mk
-# main.o: main.cpp testCaseMakefile
-# 	g++ -c main.cpp
-
-# TestCase.o: testCaseMakefile
-# main.o : main.cpp testCase/TestCase.hpp
-
-# BaseObject.o : base/BaseObject.cpp base/BaseObject.hpp
-# 	g++ -c base/BaseObject.cpp
-
-# Person.o : base/Person.cpp base/Person.hpp base/BaseObject.hpp
-# 	g++ -c base/Person.cpp
-
-# main.o : main.cpp base/Person.hpp
-# 	g++ -c main.cpp
 
 # ====测试model
 

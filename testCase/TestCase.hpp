@@ -22,6 +22,7 @@ namespace zfq {
 	extern void testDish();
 	extern void testComment();
 	extern void testRelpy();
+	extern void testConnectMysql();
 }
 
 #endif /* TestCase_hpp */
