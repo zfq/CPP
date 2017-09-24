@@ -14,7 +14,7 @@ utilsMakefile:
 	cd ../utils && make -f utils.mk
 
 TestCase.o : TestCase.cpp
-	g++ -I /usr/local/include -c TestCase.cpp
+	g++ -I /usr/local/include  -c TestCase.cpp
 # g++ -I $(boostPath) -c TestCase.cpp
 # thirdPartyMakefile:
 # 	cd ../thirdParty; make -f thirdParty.mk

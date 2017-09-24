@@ -18,6 +18,7 @@
 #include "../model/User.hpp"
 #include "../model/Dish.hpp"
 #include "../thirdParty/mySqlConn/include/mysql_driver.h"
+#include "../thirdParty/mySqlConn/include/cppconn/statement.h"
 #include "../thirdParty/mySqlConn/include/mysql_connection.h"
 #include <iostream>
 #include <string>
@@ -149,20 +150,41 @@ namespace zfq {
 		r.description();
 	}
 
+	void deleteStmt(sql::Statement *stmt)
+	{
+		if (stmt != NULL) {
+			delete stmt;
+			stmt = NULL;
+		}
+	}
+
+	void deleteConn(sql::Connection *con)
+	{
+		if (con != NULL) {
+			delete con;
+			con = NULL;
+		}
+	}
+
 	void testConnectMysql()
 	{
-		// sql::mysql::MySQL_Driver *driver;
-		// sql::Connection *con;
+		sql::mysql::MySQL_Driver *driver;
+		sql::Connection *con;
+		sql::Statement *stmt;
+		try {
+			driver = sql::mysql::get_mysql_driver_instance();
+			con = driver->connect("tcp://127.0.0.1:3306", "root", "123456");
 
-		// driver = sql::mysql::get_mysql_driver_instance();
-		// con = driver->connect("tcp://127.0.0.1:3306", "root", "123456");
+			stmt = con->createStatement();
+			bool result = stmt->execute("CREATE DATABASE IF NOT EXISTS foodDeleverSystem");
 
-		// sql::Statement *stmt;
-		// stmt = con->createStatement();
-		// stmt->execute("USE " EXAMPLE_DB);
-		// stmt->execute("DROP TABLE IF EXISTS test");
-		// stmt->execute("CREATE TABLE test(id INT, label CHAR(1))");
-		// stmt->execute("INSERT INTO test(id, label) VALUES (1, 'a')");
-		// delete con;
+			deleteStmt(stmt);
+			deleteConn(con);
+		} catch (sql::SQLException &e){
+			std::cout << e.what() << "\n";
+			deleteStmt(stmt);
+			deleteConn(con);
+		}
+
 	}
 }
