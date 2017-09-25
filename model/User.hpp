@@ -18,11 +18,11 @@ namespace zfq {
 	class User : public Person
 	{
 	private:
-		long userId;
-		string nickName;
-		string avatarId;
-		string mail;
-		string password;
+		long mUserId;
+		string mNickName;
+		string mAvatarId;
+		string mMail;
+		string mPassword;
 		
 		void initMemberVariables(const User &);
 	public:

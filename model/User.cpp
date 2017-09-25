@@ -11,7 +11,7 @@
 
 namespace zfq {
 	
-	User::User():Person(),userId(0),nickName(""),avatarId(""),mail(""),password("")
+	User::User():Person(),mUserId(0),mNickName(""),mAvatarId(""),mMail(""),mPassword("")
 	{
 		
 	}
@@ -28,11 +28,11 @@ namespace zfq {
 	
 	void User::initMemberVariables(const User &user)
 	{
-		this->userId = user.userId;
-		this->nickName = user.nickName;
-		this->avatarId = user.avatarId;
-		this->mail = user.mail;
-		this->password = user.password;
+		this->mUserId = user.mUserId;
+		this->mNickName = user.mNickName;
+		this->mAvatarId = user.mAvatarId;
+		this->mMail = user.mMail;
+		this->mPassword = user.mPassword;
 	}
 
 	User & User::operator=(const User &user)
@@ -49,52 +49,52 @@ namespace zfq {
 	
 	const string & User::getNickName()
 	{
-		return nickName;
+		return mNickName;
 	}
 	
 	void User::setNickName(const string &nickName)
 	{
-		this->nickName = nickName;
+		this->mNickName = nickName;
 	}
 	
 	const long User::getUserId()
 	{
-		return userId;
+		return mUserId;
 	}
 	
 	void User::setUserId(const long userId)
 	{
-		this->userId = userId;
+		this->mUserId = userId;
 	}
 	
 	string & User::getAvatarId()
 	{
-		return avatarId;
+		return mAvatarId;
 	}
 	
 	void User::setAvatarId(const string &avatarId)
 	{
-		this->avatarId = avatarId;
+		this->mAvatarId = avatarId;
 	}
 	
 	const string & User::getMail()
 	{
-		return mail;
+		return mMail;
 	}
 	
 	void User::setMail(const string &mail)
 	{
-		this->mail = mail;
+		this->mMail = mail;
 	}
 	
 	const string & User::getPassword()
 	{
-		return password;
+		return mPassword;
 	}
 	
 	void User::setPassword(const string &password)
 	{
-		this->password = password;
+		this->mPassword = password;
 	}
 	
 	void User::description()
@@ -104,11 +104,11 @@ namespace zfq {
 		std::cout
 		<< "<Order:" << this
 		<< "{"
-		<< "userId:" << userId
-		<< " nickName:" << nickName
-		<< " avatarId:" << avatarId
-		<< " mail:" << mail
-		<< " password:" << password
+		<< "userId:" << mUserId
+		<< " nickName:" << mNickName
+		<< " avatarId:" << mAvatarId
+		<< " mail:" << mMail
+		<< " password:" << mPassword
 		<< "}>\n";
 	}
 }
