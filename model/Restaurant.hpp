@@ -42,7 +42,7 @@ namespace zfq {
 	class Restaurant : public BaseObject
 	{
 	private:
-		/** 餐馆id */
+		/** 餐馆id 主键*/
 		long restaurantId;
 		
 		/** 餐馆类型 */

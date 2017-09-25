@@ -27,12 +27,12 @@ namespace zfq {
 		/**
 		 配送员唯一id号
 		 */
-		long deliveryDriverId;
+		long mDeliveryDriverId;
 		
 		/**
 		 配送员所关联的所有的餐馆id
 		 */
-		vector<string> restaurantIds;
+		vector<string> mRestaurantIds;
 		
 	public:
 		DeliveryDriver();

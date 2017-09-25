@@ -36,7 +36,7 @@ namespace zfq {
 		
 	private:
 		
-		/** 订单id */
+		/** 订单id 主键*/
 		long orderId;
 		
 		/** 商家id */

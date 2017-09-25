@@ -7,6 +7,9 @@
 //
 
 #include "OrderDao.hpp"
+#include "../thirdParty/mySqlConn/include/mysql_driver.h"
+#include "../thirdParty/mySqlConn/include/cppconn/statement.h"
+#include "../thirdParty/mySqlConn/include/mysql_connection.h"
 
 namespace zfq {
 	

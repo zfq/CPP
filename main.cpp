@@ -13,8 +13,9 @@
 
 int main(int argc, const char * argv[]) {
 	
-	zfq::testConnectMysql();
-	
+	zfq::testCreateDatabase();
+	zfq::testCreateTable();
+    
     // sql::mysql::MySQL_Driver *driver;
     // sql::Connection *con;
 

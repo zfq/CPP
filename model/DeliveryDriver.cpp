@@ -11,21 +11,21 @@
 #include <iostream>
 
 namespace zfq {
-	DeliveryDriver::DeliveryDriver():Person(),deliveryDriverId(0)
+	DeliveryDriver::DeliveryDriver():Person(),mDeliveryDriverId(0)
 	{
 		
 	}
 	
 	DeliveryDriver::DeliveryDriver(const long deliveryDriverId, const string &jsonArrayStr)
 	{
-		this->deliveryDriverId = deliveryDriverId;
-		zfq::split(jsonArrayStr, ",", this->restaurantIds);
+		this->mDeliveryDriverId = deliveryDriverId;
+		zfq::split(jsonArrayStr, ",", this->mRestaurantIds);
 	}
 	
 	DeliveryDriver::DeliveryDriver(const DeliveryDriver &deliveryDriver):Person(deliveryDriver)
 	{
-		deliveryDriverId = deliveryDriver.deliveryDriverId;
-		restaurantIds = deliveryDriver.restaurantIds;
+		mDeliveryDriverId = deliveryDriver.mDeliveryDriverId;
+		mRestaurantIds = deliveryDriver.mRestaurantIds;
 	}
 	
 	DeliveryDriver::~DeliveryDriver()
@@ -40,29 +40,29 @@ namespace zfq {
 		}
 		
 		Person::operator=(deliveryDriver);
-		deliveryDriverId = deliveryDriver.deliveryDriverId;
-		restaurantIds = deliveryDriver.restaurantIds;
+		mDeliveryDriverId = deliveryDriver.mDeliveryDriverId;
+		mRestaurantIds = deliveryDriver.mRestaurantIds;
 		return *this;
 	}
 	
 	const long DeliveryDriver::getDeliveryDriverId()
 	{
-		return deliveryDriverId;
+		return mDeliveryDriverId;
 	}
 	
 	void DeliveryDriver::setDeliveryDriverId(const long deliveryDriverId)
 	{
-		this->deliveryDriverId = deliveryDriverId;
+		this->mDeliveryDriverId = deliveryDriverId;
 	}
 	
 	const vector<string> DeliveryDriver::getRestaurantIds()
 	{
-		return restaurantIds;
+		return mRestaurantIds;
 	}
 	
 	void DeliveryDriver::setRestaurantIds(const string &restaurantIds)
 	{
-		split(restaurantIds, ",", this->restaurantIds);
+		split(restaurantIds, ",", this->mRestaurantIds);
 	}
 	
 	void DeliveryDriver::description()
@@ -70,8 +70,8 @@ namespace zfq {
 		std::cout
 		<< "<DeliveryDriver:" << this
 		<< "{"
-		<< "deliveryDriverId:" << (this->deliveryDriverId)
-		<< " restaurantIds:" << stringFromArray(restaurantIds)
+		<< "deliveryDriverId:" << (mDeliveryDriverId)
+		<< " restaurantIds:" << stringFromArray(mRestaurantIds)
 		<< "}>\n";
 	}
 }

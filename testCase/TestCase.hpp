@@ -14,7 +14,11 @@
 namespace zfq {
 	extern void testJson();
 	extern void testSplit();
+
+	//base
 	extern void testPerson();
+
+	//model
 	extern void testDeliveryDriver();
 	extern void testOrder();
 	extern void testUser();
@@ -22,7 +26,11 @@ namespace zfq {
 	extern void testDish();
 	extern void testComment();
 	extern void testRelpy();
-	extern void testConnectMysql();
+
+	//dao
+	extern void testCreateDatabase();
+	extern void testDropDatabase();
+	extern void testCreateTable();
 }
 
 #endif /* TestCase_hpp */
