@@ -10,7 +10,7 @@
 #include <iostream>
 
 namespace zfq {
-	Restaurant::Restaurant():BaseObject(),restaurantId(0),restaurantType(RestaurantTypeStapleFood),agent(),address("")
+	Restaurant::Restaurant():BaseObject(),mRestaurantId(0),mRestaurantType(RestaurantTypeStapleFood),mAgent(),mAddress("")
 	{
 		
 	}
@@ -27,50 +27,50 @@ namespace zfq {
 	
 	void Restaurant::initMemberVariables(const Restaurant &restaurant)
 	{
-		restaurantId = restaurant.restaurantId;
-		restaurantType = restaurant.restaurantType;
-		agent = restaurant.agent;
-		address = restaurant.address;
+		mRestaurantId = restaurant.mRestaurantId;
+		mRestaurantType = restaurant.mRestaurantType;
+		mAgent = restaurant.mAgent;
+		mAddress = restaurant.mAddress;
 	}
 	
 	const long Restaurant::getRestaurantId()
 	{
-		return restaurantId;
+		return mRestaurantId;
 	}
 	
 	void Restaurant::setRestaurantId(long restaurantId)
 	{
-		this->restaurantId = restaurantId;
+		this->mRestaurantId = restaurantId;
 	}
 	
 	const RestaurantType Restaurant::getRestaurantType()
 	{
-		return restaurantType;
+		return mRestaurantType;
 	}
 	
 	void Restaurant::setRestaurantType(RestaurantType restaurantType)
 	{
-		this->restaurantType = restaurantType;
+		this->mRestaurantType = restaurantType;
 	}
 	
 	const Person & Restaurant::getAgent()
 	{
-		return agent;
+		return mAgent;
 	}
 	
 	void Restaurant::setAgent(const Person & agent)
 	{
-		this->agent = agent;
+		this->mAgent = agent;
 	}
 	
 	const string & Restaurant::getAddress()
 	{
-		return this->address;
+		return this->mAddress;
 	}
 	
 	void Restaurant::setAddress(const string & address)
 	{
-		this->address = address;
+		this->mAddress = address;
 	}
 	
 	Restaurant & Restaurant::operator=(const Restaurant &restaurant)
@@ -88,12 +88,12 @@ namespace zfq {
 		std::cout
 		<< "<Restaurant:" << this
 		<< "{"
-		<< "restaurantId:" << restaurantId
-		<< " restaurantType:" << restaurantType;
+		<< "restaurantId:" << mRestaurantId
+		<< " restaurantType:" << mRestaurantType;
 		
 		std::cout << " agent:";
-		agent.description();
-		std::cout << " address:" << address
+		mAgent.description();
+		std::cout << " address:" << mAddress
 		<< "}>\n";
 	}
 }

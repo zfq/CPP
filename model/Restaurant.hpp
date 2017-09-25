@@ -43,16 +43,16 @@ namespace zfq {
 	{
 	private:
 		/** 餐馆id 主键*/
-		long restaurantId;
+		long mRestaurantId;
 		
 		/** 餐馆类型 */
-		RestaurantType restaurantType;
+		RestaurantType mRestaurantType;
 		
 		/** 餐馆法人 */
-		Person agent;
+		Person mAgent;
 		
 		/** 餐馆地址 */
-		string address;
+		string mAddress;
 		
 		void initMemberVariables(const Restaurant &);
 	public:

@@ -37,22 +37,22 @@ namespace zfq {
 	private:
 		
 		/** 订单id 主键*/
-		long orderId;
+		long mOrderId;
 		
 		/** 商家id */
-		long restaurantId;
+		long mRestaurantId;
 		
 		/** 用户id */
-		long userId;
+		long mUserId;
 		
 		/** 配送员id */
-		long deliveryDriverId;
+		long mDeliveryDriverId;
 		
 		/** 订单状态 */
-		OrderStatus orderStatus;
+		OrderStatus mOrderStatus;
 		
 		/** 每个订单状态对应的修改时间 */
-		string statusModifiedDate[NumberOfOrderStatus];
+		string mStatusModifiedDate[NumberOfOrderStatus];
 		
 		void initMemberVariables(const Order &);
 		

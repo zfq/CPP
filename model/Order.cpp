@@ -11,10 +11,10 @@
 
 namespace zfq {
 	
-	Order::Order():BaseObject(),orderId(0),restaurantId(0),userId(0),deliveryDriverId(0),orderStatus(OrderStatusNotYetAccepted)
+	Order::Order():BaseObject(),mOrderId(0),mRestaurantId(0),mUserId(0),mDeliveryDriverId(0),mOrderStatus(OrderStatusNotYetAccepted)
 	{
 		for (int i = 0; i < NumberOfOrderStatus; i++) {
-			statusModifiedDate[i] = "";
+			mStatusModifiedDate[i] = "";
 		}
 	}
 	
@@ -30,14 +30,14 @@ namespace zfq {
 	
 	void Order::initMemberVariables(const Order &order)
 	{
-		orderId = order.orderId;
-		restaurantId = order.restaurantId;
-		userId = order.userId;
-		deliveryDriverId = order.deliveryDriverId;
-		orderStatus = order.orderStatus;
+		mOrderId = order.mOrderId;
+		mRestaurantId = order.mRestaurantId;
+		mUserId = order.mUserId;
+		mDeliveryDriverId = order.mDeliveryDriverId;
+		mOrderStatus = order.mOrderStatus;
 		
 		for (int i = 0; i < NumberOfOrderStatus; i++) {
-			statusModifiedDate[i] = order.statusModifiedDate[i];
+			mStatusModifiedDate[i] = order.mStatusModifiedDate[i];
 		}
 	}
 	
@@ -53,65 +53,65 @@ namespace zfq {
 	
 	long Order::getOrderId()
 	{
-		return orderId;
+		return mOrderId;
 	}
 	
 	void Order::setOrderId(const long orderId)
 	{
-		this->orderId = orderId;
+		this->mOrderId = orderId;
 	}
 	
 	long Order::getUserId()
 	{
-		return userId;
+		return mUserId;
 	}
 	
 	void Order::setUserId(const long userId)
 	{
-		this->userId = userId;
+		this->mUserId = userId;
 	}
 	
 	long Order::getDeliveryDriverId()
 	{
-		return deliveryDriverId;
+		return mDeliveryDriverId;
 	}
 	
 	void Order::setDeliveryDriverId(const long deliveryDriverId)
 	{
-		this->deliveryDriverId = deliveryDriverId;
+		this->mDeliveryDriverId = deliveryDriverId;
 	}
 	
 	OrderStatus Order::getOrderStatus()
 	{
-		return orderStatus;
+		return mOrderStatus;
 	}
 	
 	void Order::setOrderStatus(OrderStatus orderStatus)
 	{
-		this->orderStatus = orderStatus;
+		this->mOrderStatus = orderStatus;
 	}
 	
 	string * Order::getStatusModifiedDate()
 	{
-		return statusModifiedDate;
+		return mStatusModifiedDate;
 	}
 	
 	void Order::description()
 	{
 		string dateStr("[");
 		for (int i = 0; i < NumberOfOrderStatus; i++) {
-			dateStr += (statusModifiedDate[i] + ",");
+			dateStr += (mStatusModifiedDate[i] + ",");
 		}
 		dateStr += "]";
 		
 		std::cout
 		<< "<Order:" << this
 		<< "{"
-		<< "orderId:" << orderId
-		<< " restaurantId:" << restaurantId
-		<< " userId:" << userId
-		<< " deliveryDriverId:" << deliveryDriverId
-		<< " orderStatus:" << orderStatus
+		<< "orderId:" << mOrderId
+		<< " restaurantId:" << mRestaurantId
+		<< " userId:" << mUserId
+		<< " deliveryDriverId:" << mDeliveryDriverId
+		<< " orderStatus:" << mOrderStatus
 		<< " statusModifiedDate:" << dateStr
 		<< "}>\n";
 	}
