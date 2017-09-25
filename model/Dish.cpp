@@ -14,7 +14,7 @@ namespace zfq {
 	
 	using std::vector;
 	
-	Dish::Dish():BaseObject()
+	Dish::Dish():BaseObject(),mRestaurantId(0),mDishName(""),mDishType(DishTypeOther),mDishDesciption("")
 	{
 		
 	}
@@ -31,61 +31,61 @@ namespace zfq {
 	
 	void Dish::initMemberVariables(const Dish &dish)
 	{
-		this->restaurantId = dish.restaurantId;
-		this->dishName = dish.dishName;
-		this->dishType = dish.dishType;
-		this->dishImgIds = dish.dishImgIds;
-		this->dishDesciption = dish.dishDesciption;
+		this->mRestaurantId = dish.mRestaurantId;
+		this->mDishName = dish.mDishName;
+		this->mDishType = dish.mDishType;
+		this->mDishImgIds = dish.mDishImgIds;
+		this->mDishDesciption = dish.mDishDesciption;
 	}
 	
 	const long Dish::getRestaurantId()
 	{
-		return restaurantId;
+		return mRestaurantId;
 	}
 	
 	void Dish::setRestaurantId(const long restaurantId)
 	{
-		this->restaurantId = restaurantId;
+		this->mRestaurantId = restaurantId;
 	}
 	
 	const string & Dish::getDishName()
 	{
-		return dishName;
+		return mDishName;
 	}
 	
 	void Dish::setDishName(const string &dishName)
 	{
-		this->dishName = dishName;
+		this->mDishName = dishName;
 	}
 	
 	DishType Dish::getDishType()
 	{
-		return dishType;
+		return mDishType;
 	}
 	
 	void Dish::setDishType(const DishType dishType)
 	{
-		this->dishType = dishType;
+		this->mDishType = dishType;
 	}
 	
 	const string & Dish::getDishDesciption()
 	{
-		return dishDesciption;
+		return mDishDesciption;
 	}
 	
 	void Dish::setDishDesciption(const string &tmpDishDescription)
 	{
-		this->dishDesciption = tmpDishDescription;
+		this->mDishDesciption = tmpDishDescription;
 	}
 	
 	const std::vector<string> & Dish::getDishImgIds()
 	{
-		return dishImgIds;
+		return mDishImgIds;
 	}
 	
 	void Dish::setDishImgIds(const string &dishImgIds)
 	{
-		split(dishImgIds, ",", this->dishImgIds);
+		split(dishImgIds, ",", this->mDishImgIds);
 	}
 	
 	Dish & Dish::operator=(const Dish &dish)
@@ -102,10 +102,10 @@ namespace zfq {
 		std::cout
 		<< "<Dish:" << this
 		<< "{"
-		<< "restaurantId:" << restaurantId
-		<< " dishName:" << dishName
-		<< " dishDesciption:" << dishDesciption
-		<< " dishImgIds:" << stringFromArray(dishImgIds)
+		<< "restaurantId:" << mRestaurantId
+		<< " dishName:" << mDishName
+		<< " dishDesciption:" << mDishDesciption
+		<< " dishImgIds:" << stringFromArray(mDishImgIds)
 		<< "}>\n";
 	}
 }

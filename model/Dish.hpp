@@ -52,19 +52,19 @@ namespace zfq {
 	{
 	private:
 		/** 所属的餐馆id */
-		long restaurantId;
+		long mRestaurantId;
 		
 		/** 菜名 */
-		string dishName;
+		string mDishName;
 		
 		/** 菜的类型 */
-		DishType dishType;
+		DishType mDishType;
 		
 		/** 菜的描述 */
-		string dishDesciption;
+		string mDishDesciption;
 		
 		/** 菜的图片 */
-		std::vector<string> dishImgIds;
+		std::vector<string> mDishImgIds;
 		
 		void initMemberVariables(const Dish &);
 	public:
