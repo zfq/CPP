@@ -26,7 +26,8 @@ namespace zfq {
 	extern void testDish();
 	extern void testComment();
 	extern void testRelpy();
-
+	extern void testRestaurantAgent();
+	
 	//dao
 	extern void testCreateDatabase();
 	extern void testDropDatabase();

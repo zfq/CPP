@@ -10,33 +10,25 @@
 #include <iostream>
 
 namespace zfq {
-	Person::Person():BaseObject(),name(""),mobile(""),gender(Unknown)
+	Person::Person():BaseObject(),mName(""),mIdCardNumber(""),mMobile(""),mGender(Unknown)
 	{
 		std::cout << "call default ctr\n";
 	}
 	
 	Person::Person(const Person &person):BaseObject()
 	{
-		name = person.name;
-		mobile = person.mobile;
-		gender = person.gender;
+		initMemberVariables(person);
 		std::cout << "call copy ctr\n";
 	}
 	
-	Person::Person(const char *name, const char *mobile, Gender gender):BaseObject()
+	void Person::initMemberVariables(const Person &person)
 	{
-		this->name = string(name);
-		this->mobile = string(mobile);
-		this->gender = gender;
+		mName = person.mName;
+		mIdCardNumber = person.mIdCardNumber;
+		mMobile = person.mMobile;
+		mGender = person.mGender;
 	}
-	
-	Person::Person(const string &name, const string &mobile, Gender gender):BaseObject()
-	{
-		this->name = name;
-		this->mobile = mobile;
-		this->gender = gender;
-	}
-	
+
 	Person::~Person()
 	{
 		std::cout << "release Person:" << this << "\n";
@@ -48,51 +40,64 @@ namespace zfq {
 			return *this;
 		}
 		
-		name = person.name;
-		mobile = person.mobile;
-		gender = person.gender;
+		initMemberVariables(person);
 		
 		return *this;
 	}
 	
 	const string & Person::getName()
 	{
-		return this->name;
+		return this->mName;
 	}
 	
 	void Person::setName(const string &name)
 	{
-		this->name = name;
+		this->mName = name;
 	}
 	
 	void Person::setName(const char *name)
 	{
-		this->name = name;
+		this->mName = name;
 	}
 	
+	const string & Person::getIdCardNumber()
+	{
+		return mIdCardNumber;
+	}
+
+	void Person::setIdCardNumber(const string &idCardNumber)
+	{
+		mIdCardNumber = idCardNumber;
+	}
+
+	void Person::setIdCardNumber(const char *idCardNumber)
+	{
+		mIdCardNumber = idCardNumber;
+	}
+
 	const string & Person::getMobile()
 	{
-		return this->mobile;
+		return this->mMobile;
 	}
 	
 	void Person::setMobile(const string &mobile)
 	{
-		this->mobile = mobile;
+		this->mMobile = mobile;
 	}
 	
 	void Person::setMobile(const char *mobile)
 	{
-		this->mobile = mobile;
+		this->mMobile = mobile;
 	}
 	
 	const Gender Person::getGender()
 	{
-		return gender;
+		return mGender;
 	}
 	
 	void Person::setGender(Gender gender)
 	{
-		this->gender = gender;
+		this->mGender = gender;
 	}
 	
 	void Person::description()
@@ -100,9 +105,10 @@ namespace zfq {
 		std::cout
 		<< "<Person:" << this
 		<< "{"
-		<< "name:" << (this->name)
-		<< " mobile:" << (this->mobile)
-		<< " gender:" << this->gender
+		<< "name:" << (this->mName)
+		<< "idCardNumber:" << (this->mIdCardNumber)
+		<< " mobile:" << (this->mMobile)
+		<< " gender:" << this->mGender
 		<< "}>\n";
 	}
 }

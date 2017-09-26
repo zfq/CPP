@@ -27,7 +27,7 @@ namespace zfq {
 	}
 	
 	void User::initMemberVariables(const User &user)
-	{
+	{		
 		this->mUserId = user.mUserId;
 		this->mNickName = user.mNickName;
 		this->mAvatarId = user.mAvatarId;
@@ -102,7 +102,7 @@ namespace zfq {
 		Person::description();
 		
 		std::cout
-		<< "<Order:" << this
+		<< "<User:" << this
 		<< "{"
 		<< "userId:" << mUserId
 		<< " nickName:" << mNickName

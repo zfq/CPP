@@ -3,7 +3,7 @@ CC = g++
 CPPFLAGS = -c -std=c++11
 
 
-all : baseMakefile utilsMakefile Comment.o DeliveryDriver.o Dish.o Order.o Reply.o Restaurant.o User.o
+all : baseMakefile utilsMakefile Comment.o DeliveryDriver.o Dish.o Order.o Reply.o Restaurant.o User.o RestaurantAgent.o
 
 .PHONY:baseMakefile
 baseMakefile:
@@ -20,7 +20,7 @@ Order.o : Order.cpp
 Reply.o : Reply.cpp
 Restaurant.o : Restaurant.cpp
 User.o : User.cpp
-
+RestaurantAgent.o : RestaurantAgent.cpp
 
 .PHONY: clean
 clean :

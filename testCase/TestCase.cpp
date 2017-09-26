@@ -9,6 +9,7 @@
 #include "TestCase.hpp"
 #include "../thirdParty/rapidjson/document.h"
 #include "../model/DeliveryDriver.hpp"
+#include "../model/RestaurantAgent.hpp"
 #include "../model/Restaurant.hpp"
 #include "../utils/StringUtil.hpp"
 #include "../model/Comment.hpp"
@@ -56,20 +57,13 @@ namespace zfq {
 		}
 	}
 	
-	Person testReturn()
-	{
-		return Person("张三", "13141187980", Female);
-	}
-	
 	void testPerson()
 	{
 		Person p;
-		p.description();
-		
-		//	p = Person("张三", "13141187980", Female);
-		//	p.description();
-		
-		p = testReturn();
+		p.setName("张三");
+		p.setIdCardNumber("412702199007246154");
+		p.setMobile("13141187980");
+		p.setGender(Female);
 		p.description();
 	}
 	
@@ -107,8 +101,7 @@ namespace zfq {
 	{
 		Restaurant r;
 		r.setRestaurantId(111);
-		Person p("张三", "1586686129", Female);
-		r.setAgent(p);
+		r.setAgentId(3332);
 		r.setRestaurantType(RestaurantTypeHotPot);
 		r.setAddress("河南省 周口市");
 		r.description();
@@ -146,8 +139,18 @@ namespace zfq {
 		r.setTargetAuthorId(2222);
 		r.setCommentDate("2011-11-12 8:45");
 		r.setContent("水电费水电费");
-
 		r.description();
+	}
+
+	void testRestaurantAgent()
+	{
+		RestaurantAgent agent;
+		agent.setName("餐馆老板名称");
+		agent.setIdCardNumber("412702199007145643");
+		agent.setGender(Female);
+		agent.setMobile("13141155678");
+		agent.setRestaurantAgentId(203455);
+		agent.description();
 	}
 
 	void deleteStmt(sql::Statement *stmt)

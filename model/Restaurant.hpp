@@ -48,8 +48,8 @@ namespace zfq {
 		/** 餐馆类型 */
 		RestaurantType mRestaurantType;
 		
-		/** 餐馆法人 */
-		Person mAgent;
+		/** 餐馆法人id */
+		long mAgentId;
 		
 		/** 餐馆地址 */
 		string mAddress;
@@ -66,8 +66,8 @@ namespace zfq {
 		const RestaurantType getRestaurantType();
 		void setRestaurantType(RestaurantType restaurantType);
 		
-		const Person & getAgent();
-		void setAgent(const Person & agent);
+		const long getAgentId();
+		void setAgentId(long agentId);
 		
 		const string & getAddress();
 		void setAddress(const string & address);

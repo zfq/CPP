@@ -10,7 +10,7 @@
 #include <iostream>
 
 namespace zfq {
-	Restaurant::Restaurant():BaseObject(),mRestaurantId(0),mRestaurantType(RestaurantTypeStapleFood),mAgent(),mAddress("")
+	Restaurant::Restaurant():BaseObject(),mRestaurantId(0),mRestaurantType(RestaurantTypeStapleFood),mAgentId(0),mAddress("")
 	{
 		
 	}
@@ -29,7 +29,7 @@ namespace zfq {
 	{
 		mRestaurantId = restaurant.mRestaurantId;
 		mRestaurantType = restaurant.mRestaurantType;
-		mAgent = restaurant.mAgent;
+		mAgentId = restaurant.mAgentId;
 		mAddress = restaurant.mAddress;
 	}
 	
@@ -53,14 +53,14 @@ namespace zfq {
 		this->mRestaurantType = restaurantType;
 	}
 	
-	const Person & Restaurant::getAgent()
+	const long Restaurant::getAgentId()
 	{
-		return mAgent;
+		return mAgentId;
 	}
 	
-	void Restaurant::setAgent(const Person & agent)
+	void Restaurant::setAgentId(long agentId)
 	{
-		this->mAgent = agent;
+		this->mAgentId = agentId;
 	}
 	
 	const string & Restaurant::getAddress()
@@ -89,11 +89,9 @@ namespace zfq {
 		<< "<Restaurant:" << this
 		<< "{"
 		<< "restaurantId:" << mRestaurantId
-		<< " restaurantType:" << mRestaurantType;
-		
-		std::cout << " agent:";
-		mAgent.description();
-		std::cout << " address:" << mAddress
+		<< " restaurantType:" << mRestaurantType
+		<< " agent:" << mAgentId
+		<< " address:" << mAddress
 		<< "}>\n";
 	}
 }

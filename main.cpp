@@ -13,9 +13,12 @@
 
 int main(int argc, const char * argv[]) {
 	
-	zfq::testCreateDatabase();
-	zfq::testCreateTable();
-    
+	// zfq::testCreateDatabase();
+	// zfq::testCreateTable();
+
+    zfq::testUser();
+    std::cout << "=======\n";
+    zfq::testRestaurantAgent();
     // sql::mysql::MySQL_Driver *driver;
     // sql::Connection *con;
 
