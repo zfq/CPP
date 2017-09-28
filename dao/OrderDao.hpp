@@ -10,14 +10,16 @@
 #define OrderDao_hpp
 
 #include <stdio.h>
+#include "BaseDao.hpp"
 #include "../model/Order.hpp"
 
 namespace zfq {
-	class OrderDao
+	class OrderDao : public BaseDao
 	{
 	public:
 		OrderDao();
 		OrderDao(const OrderDao &);
+
 		bool createTable();
 		bool insert(const Order &order);
 		bool deleteObj(int id);

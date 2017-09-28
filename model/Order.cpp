@@ -11,7 +11,7 @@
 
 namespace zfq {
 	
-	Order::Order():BaseObject(),mOrderId(0),mRestaurantId(0),mUserId(0),mDeliveryDriverId(0),mOrderStatus(OrderStatusNotYetAccepted)
+	Order::Order():BaseObject(),mOrderId(0),mRestaurantId(0),mUserId(0),mDeliveryDriverId(0),mOrderStatus(OrderStatusCreateSucceed)
 	{
 		for (int i = 0; i < NumberOfOrderStatus; i++) {
 			mStatusModifiedDate[i] = "";

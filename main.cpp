@@ -8,24 +8,17 @@
 
 #include <iostream>
 #include "testCase/TestCase.hpp"
-// #include "thirdParty/mySqlConn/include/mysql_driver.h"
-// #include "thirdParty/mySqlConn/include/mysql_connection.h"
 
 int main(int argc, const char * argv[]) {
 	
 	// zfq::testCreateDatabase();
 	// zfq::testCreateTable();
 
-    zfq::testUser();
-    std::cout << "=======\n";
-    zfq::testRestaurantAgent();
-    // sql::mysql::MySQL_Driver *driver;
-    // sql::Connection *con;
+    // zfq::testUser();
+    // std::cout << "=======\n";
+    // zfq::testRestaurantAgent();
 
-    // driver = sql::mysql::get_mysql_driver_instance();
-    // con = driver->connect("tcp://127.0.0.1:3306", "root", "123456");
-
-    // delete con;
+    zfq::testDao();
 
 	return 0;
 }

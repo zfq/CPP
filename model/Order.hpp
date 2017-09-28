@@ -16,23 +16,31 @@
 namespace zfq {
 	
 	enum OrderStatus {
-		/** 未接单 */
-		OrderStatusNotYetAccepted,
-		/** 已拒单 */
-		OrderStatusRejected,
-		/** 已接单 */
-		OrderStatusAccepted,
-		/** 配送中 */
+		/** 订单创建/提交成功 */
+		OrderStatusCreateSucceed,
+		/** 订单已被用户取消 */
+		OrderStatusUserCancelled,
+		/** 订单已被商家取消 */
+		OrderStatusRestaurantCancelled,
+		/** 订单已支付 */
+		OrderStatusPaid,
+		/** 商家已接单 */
+		OrderStatusRestaurantAccepted,
+		/** 骑手已接单 */
+		OrderStatusDriverAccepted,
+		/** 开始配送 */
 		OrderStatusInDistribution,
 		/** 已完成 */
-		OrderStatusComplete
+		OrderStatusComplete,
+		/** 配送失败 */
+		OrderStatusFailed
 	};
 	
 	class Order : public BaseObject
 	{
 	public:
-		/** 订单状态的个数，目前只有5种状态 */
-		static const int NumberOfOrderStatus = 5;
+		/** 订单状态的个数，目前只有9种状态 */
+		static const int NumberOfOrderStatus = 9;
 		
 	private:
 		
@@ -51,7 +59,7 @@ namespace zfq {
 		/** 订单状态 */
 		OrderStatus mOrderStatus;
 		
-		/** 每个订单状态对应的修改时间 */
+		/** 每个订单状态对应的修改时间戳 */
 		string mStatusModifiedDate[NumberOfOrderStatus];
 		
 		void initMemberVariables(const Order &);

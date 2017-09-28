@@ -32,6 +32,7 @@ namespace zfq {
 	extern void testCreateDatabase();
 	extern void testDropDatabase();
 	extern void testCreateTable();
+	extern void testDao();
 }
 
 #endif /* TestCase_hpp */

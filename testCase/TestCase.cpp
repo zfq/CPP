@@ -21,6 +21,7 @@
 #include "../thirdParty/mySqlConn/include/mysql_driver.h"
 #include "../thirdParty/mySqlConn/include/cppconn/statement.h"
 #include "../thirdParty/mySqlConn/include/mysql_connection.h"
+#include "../dao/OrderDao.hpp"
 #include <iostream>
 #include <string>
 
@@ -248,6 +249,7 @@ namespace zfq {
 				"userId BIGINT UNSIGNED,"
 				"deliveryDriverId BIGINT UNSIGNED,"
 				"orderStatus TINYINT UNSIGNED,"
+				"statusModifiedDate varchar(200),"
 				"PRIMARY KEY (orderId)"
 				") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
@@ -282,4 +284,11 @@ namespace zfq {
 		const char * sqlArray[] = {sql1, createDishSql, createUserSql, createRestaurantSql, createOrderSql, createCommentSql, createReplySql, createDeliveryDriverSql};
 		executeSql(sqlArray,8);
 	}
+
+	void testDao()
+	{
+		OrderDao dao;
+		dao.createTable();
+	}
+
 }

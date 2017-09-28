@@ -18,10 +18,19 @@ namespace zfq {
 	class User : public Person
 	{
 	private:
+		/** 用户id 主键 */
 		long mUserId;
+
+		/** 用户昵称 */
 		string mNickName;
+
+		/** 用户头像id */
 		string mAvatarId;
+
+		/** 用户邮箱 */
 		string mMail;
+
+		/** 用户密码 */
 		string mPassword;
 		
 		void initMemberVariables(const User &);
