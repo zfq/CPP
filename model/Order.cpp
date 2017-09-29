@@ -13,6 +13,7 @@ namespace zfq {
 	
 	Order::Order():BaseObject(),mOrderId(0),mRestaurantId(0),mUserId(0),mDeliveryDriverId(0),mOrderStatus(OrderStatusCreateSucceed)
 	{
+		mStatusModifiedDate = new string[NumberOfOrderStatus];
 		for (int i = 0; i < NumberOfOrderStatus; i++) {
 			mStatusModifiedDate[i] = "";
 		}
@@ -25,7 +26,7 @@ namespace zfq {
 	
 	Order::~Order()
 	{
-		
+		delete[] mStatusModifiedDate;
 	}
 	
 	void Order::initMemberVariables(const Order &order)
@@ -35,6 +36,10 @@ namespace zfq {
 		mUserId = order.mUserId;
 		mDeliveryDriverId = order.mDeliveryDriverId;
 		mOrderStatus = order.mOrderStatus;
+		
+		if (mStatusModifiedDate == NULL) {
+			mStatusModifiedDate = new string[NumberOfOrderStatus];
+		}
 		
 		for (int i = 0; i < NumberOfOrderStatus; i++) {
 			mStatusModifiedDate[i] = order.mStatusModifiedDate[i];
@@ -51,7 +56,7 @@ namespace zfq {
 		return *this;
 	}
 	
-	long Order::getOrderId()
+	long Order::getOrderId() const
 	{
 		return mOrderId;
 	}
@@ -61,7 +66,17 @@ namespace zfq {
 		this->mOrderId = orderId;
 	}
 	
-	long Order::getUserId()
+	long Order::getRestaurantId() const
+	{
+		return mRestaurantId;
+	}
+
+	void Order::setRestaurantId(const long restaurantId)
+	{
+		mRestaurantId = restaurantId;
+	}
+
+	long Order::getUserId() const
 	{
 		return mUserId;
 	}
@@ -71,7 +86,7 @@ namespace zfq {
 		this->mUserId = userId;
 	}
 	
-	long Order::getDeliveryDriverId()
+	long Order::getDeliveryDriverId() const
 	{
 		return mDeliveryDriverId;
 	}
@@ -81,7 +96,7 @@ namespace zfq {
 		this->mDeliveryDriverId = deliveryDriverId;
 	}
 	
-	OrderStatus Order::getOrderStatus()
+	OrderStatus Order::getOrderStatus() const
 	{
 		return mOrderStatus;
 	}
@@ -91,7 +106,7 @@ namespace zfq {
 		this->mOrderStatus = orderStatus;
 	}
 	
-	string * Order::getStatusModifiedDate()
+	string * Order::getStatusModifiedDate() const
 	{
 		return mStatusModifiedDate;
 	}

@@ -57,33 +57,7 @@ namespace zfq {
             std::cout << "出错了:" << e.what() << "\n";
             return false;
         }
-        
-        // return false;
-        
-        // sql::mysql::MySQL_Driver *driver;
-        // sql::Connection *con;
-        // sql::Statement *stmt;
-        // try {
-        //     driver = sql::mysql::get_mysql_driver_instance();
-        //     con = driver->connect("tcp://127.0.0.1:3306", "root", "123456");
-        //     stmt = con->createStatement();
-
-        //     int result = 0;
-        //     bool tmpResult = false;
-        //     for (int i = 0; i < sqlArraySize; i++) {
-        //         tmpResult = stmt->execute(sqlArray[i]);
-        //         result += tmpResult;
-        //     }
-
-        //     releaseStmt(stmt);
-        //     releaseConn(con);
-
-        //     return (result == sqlArraySize) ? true : false;
-        // } catch (sql::SQLException &e){
-        //     std::cout << "出错了:" << e.what() << "\n";
-        //     return false;
-        // }
-        
-        return true;
+        return false;
     }
+
 }

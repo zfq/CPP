@@ -60,7 +60,7 @@ namespace zfq {
 		OrderStatus mOrderStatus;
 		
 		/** 每个订单状态对应的修改时间戳 */
-		string mStatusModifiedDate[NumberOfOrderStatus];
+		string *mStatusModifiedDate;
 		
 		void initMemberVariables(const Order &);
 		
@@ -71,16 +71,22 @@ namespace zfq {
 		
 		Order & operator=(const Order &);
 		
-		long getOrderId();
+		long getOrderId() const;
 		void setOrderId(const long orderId);
-		long getUserId();
+
+		long getRestaurantId() const;
+		void setRestaurantId(const long restaurantId);
+
+		long getUserId() const;
 		void setUserId(const long userId);
-		long getDeliveryDriverId();
+
+		long getDeliveryDriverId() const;
 		void setDeliveryDriverId(const long deliveryDriverId);
-		OrderStatus getOrderStatus();
+		
+		OrderStatus getOrderStatus() const;
 		void setOrderStatus(const OrderStatus orderStatus);
 		
-		string * getStatusModifiedDate();
+		string * getStatusModifiedDate() const;
 		
 		virtual void description();
 	};

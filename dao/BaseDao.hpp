@@ -12,9 +12,9 @@
 #include <stdio.h>
 #include <vector>
 #include "../base/BaseObject.hpp"
-#include "../thirdParty/mySqlConn/include/mysql_driver.h"
-#include "../thirdParty/mySqlConn/include/cppconn/statement.h"
-#include "../thirdParty/mySqlConn/include/mysql_connection.h"
+#include <mysql_driver.h>
+#include <mysql_connection.h>
+#include <cppconn/statement.h>
 
 namespace zfq {
 	class BaseDao : public BaseObject

@@ -18,9 +18,9 @@
 #include "../model/Order.hpp"
 #include "../model/User.hpp"
 #include "../model/Dish.hpp"
-#include "../thirdParty/mySqlConn/include/mysql_driver.h"
-#include "../thirdParty/mySqlConn/include/cppconn/statement.h"
-#include "../thirdParty/mySqlConn/include/mysql_connection.h"
+#include <mysql_driver.h>
+#include <mysql_connection.h>
+#include <cppconn/statement.h>
 #include "../dao/OrderDao.hpp"
 #include <iostream>
 #include <string>
@@ -248,8 +248,16 @@ namespace zfq {
 				"restaurantId BIGINT UNSIGNED,"
 				"userId BIGINT UNSIGNED,"
 				"deliveryDriverId BIGINT UNSIGNED,"
-				"orderStatus TINYINT UNSIGNED,"
-				"statusModifiedDate varchar(200),"
+				"orderStatus INT UNSIGNED,"
+				"createSucceedDate DATETIME,"
+				"userCancelledDate DATETIME,"
+				"restaurantCancelledDate DATETIME,"
+				"paidDate DATETIME,"
+				"restaurantAcceptedDate DATETIME,"
+				"driverAcceptedDate DATETIME,"
+				"inDistributionDate DATETIME,"
+				"completeDate DATETIME,"
+				"failedDate DATETIME,"
 				"PRIMARY KEY (orderId)"
 				") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
@@ -289,6 +297,13 @@ namespace zfq {
 	{
 		OrderDao dao;
 		dao.createTable();
+
+		Order order;
+		order.setUserId(13122245);
+		order.setDeliveryDriverId(3333);
+		order.setRestaurantId(0);
+		order.setOrderStatus(OrderStatusRestaurantAccepted);
+		dao.insert(order);
 	}
 
 }
