@@ -113,7 +113,8 @@ namespace zfq {
 	bool OrderDao::remove(long orderId)
 	{
 		ConnectionProvider::getSqlConnection();
-		std::string sql = "USE foodDeleverSystem;DELETE FROM food_delivery_system_order WHERE orderId =" + std::to_string(orderId);
+		BaseDao::executeSql("USE foodDeleverSystem");
+		std::string sql = "DELETE FROM food_delivery_system_order WHERE orderId =" + std::to_string(orderId);
 		bool result = BaseDao::executeSql(sql);
 		return result;
 	}
