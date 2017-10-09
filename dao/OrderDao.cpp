@@ -120,6 +120,31 @@ namespace zfq {
 	
 	bool OrderDao::update(const Order &order)
 	{
+		sql::Connection *conn = ConnectionProvider::getSqlConnection();
+		BaseDao::executeSql("USE foodDeleverSystem");
+
+		sql::PreparedStatement *prep_stmt = conn->prepareStatement(
+			"UPDATE food_delivery_system_order SET restaurantId=?, userId=?, deliveryDriverId=?, orderStatus=?,"
+			"createSucceedDate=?, userCancelledDate=?, restaurantCancelledDate=?, paidDate=?, restaurantAcceptedDate=?, driverAcceptedDate=?, inDistributionDate=?, completeDate=?, failedDate=? "
+			"WHERE orderId=?"
+			);
+		std::string resIdStr = stringFromInt(order.getRestaurantId());
+		std::string userIdStr = stringFromInt(order.getUserId());
+		std::string driverIdStr = stringFromInt(order.getDeliveryDriverId());
+		
+		setPreStatementBigIntValue(prep_stmt, 1, resIdStr);
+		setPreStatementBigIntValue(prep_stmt, 2, userIdStr);
+		setPreStatementBigIntValue(prep_stmt, 3, driverIdStr);
+		prep_stmt->setInt(4, order.getOrderStatus());
+
+		//设置每个状态对应的日期
+		std::string *modifiedDate = order.getStatusModifiedDate();
+		for (int i = 0 ;i < Order::NumberOfOrderStatus; i++) {
+			setPreStatementValue(prep_stmt, 5+i, modifiedDate[i]);
+		}
+		prep_stmt->setBigInt(5+Order::NumberOfOrderStatus, stringFromInt(order.getOrderId()));
+		prep_stmt->execute();
+
 		return true;
 	}
 	
@@ -131,8 +156,8 @@ namespace zfq {
 	
 	const Order OrderDao::getById(long orderId)
 	{
-		sql::Connection *con = ConnectionProvider::getSqlConnection();
-		sql::Statement *stmt = con->createStatement();;
+		sql::Connection *conn = ConnectionProvider::getSqlConnection();
+		sql::Statement *stmt = conn->createStatement();;
 		sql::ResultSet  *res;
 		
 		BaseDao::executeSql("USE foodDeleverSystem");
