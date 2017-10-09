@@ -41,6 +41,20 @@ namespace zfq {
         }
     }
 
+    bool BaseDao::executeSql(const std::string &sql)
+    {
+        sql::Statement *stmt;
+        try {
+            stmt = zfq::ConnectionProvider::getSqlStatement();
+            int result = stmt->execute(sql);
+            return result;
+        } catch (sql::SQLException &e) {
+            std::cout << "出错了:" << e.what() << "\n";
+            return false;
+        }
+        return false;
+    }
+
     bool BaseDao::executeSql(const char* sqlArray[] , int sqlArraySize)
     {
         sql::Statement *stmt;

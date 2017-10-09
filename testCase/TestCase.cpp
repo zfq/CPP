@@ -296,14 +296,15 @@ namespace zfq {
 	void testDao()
 	{
 		OrderDao dao;
-		dao.createTable();
+		// dao.createTable();
 
-		Order order;
-		order.setUserId(13122245);
-		order.setDeliveryDriverId(3333);
-		order.setRestaurantId(0);
-		order.setOrderStatus(OrderStatusRestaurantAccepted);
-		dao.insert(order);
+		// Order order;
+		// order.setUserId(13122245);
+		// order.setDeliveryDriverId(3333);
+		// order.setRestaurantId(0);
+		// order.setOrderStatus(OrderStatusRestaurantAccepted);
+		// dao.insert(order);
+		dao.getById(4);
 	}
 
 }

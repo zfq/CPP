@@ -22,10 +22,12 @@ namespace zfq {
 
 		bool createTable();
 		bool insert(const Order &order);
-		bool deleteObj(int id);
+		bool remove(long orderId);
 		bool update(const Order &order);
-		std::vector<Order> getAll();
-		const Order & getById(long id);
+		std::list<Order> getAll();
+		/* 从startOrderId起查询number个 */
+		std::list<Order> getOrders(long startOrderId, int number);
+		const Order getById(long orderId);
 	};
 }
 #endif /* OrderDao_hpp */

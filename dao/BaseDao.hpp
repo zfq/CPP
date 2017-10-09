@@ -27,6 +27,7 @@ namespace zfq {
 		void releaseStmt(sql::Statement *stmt);
 		void releaseConn(sql::Connection *con);
 
+		bool executeSql(const std::string &sql);
 		bool executeSql(const char* sqlArray[] , int sqlArraySize);
 	};
 }

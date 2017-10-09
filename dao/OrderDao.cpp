@@ -110,9 +110,12 @@ namespace zfq {
 		return true;
 	}
 	
-	bool OrderDao::deleteObj(int id)
+	bool OrderDao::remove(long orderId)
 	{
-		return true;
+		ConnectionProvider::getSqlConnection();
+		std::string sql = "USE foodDeleverSystem;DELETE FROM food_delivery_system_order WHERE orderId =" + std::to_string(orderId);
+		bool result = BaseDao::executeSql(sql);
+		return result;
 	}
 	
 	bool OrderDao::update(const Order &order)
@@ -120,14 +123,38 @@ namespace zfq {
 		return true;
 	}
 	
-	std::vector<Order> OrderDao::getAll()
+	std::list<Order> OrderDao::getAll()
 	{
-		std::vector<Order> v;
+		std::list<Order> v;
 		return v;
 	}
 	
-	const Order & OrderDao::getById(long id)
+	const Order OrderDao::getById(long orderId)
 	{
-		return Order();
+		sql::Connection *con = ConnectionProvider::getSqlConnection();
+		sql::Statement *stmt = con->createStatement();;
+		sql::ResultSet  *res;
+		
+		BaseDao::executeSql("USE foodDeleverSystem");
+
+		sql::SQLString sql("SELECT * FROM food_delivery_system_order WHERE orderId = " + std::to_string(orderId));
+		res = stmt->executeQuery(sql);
+
+		Order order;
+		while (res->next()) {
+			order.setOrderId(orderId);
+			order.setRestaurantId(res->getUInt64("restaurantId"));
+			order.setUserId(res->getUInt64("userId"));
+			order.setDeliveryDriverId(res->getUInt64("deliveryDriverId"));
+			order.setOrderStatus(static_cast<OrderStatus>(res->getUInt("orderStatus")));
+
+			//设置日期
+			std::string *modifiedDate = order.getStatusModifiedDate();
+			for (int i = 0; i < Order::NumberOfOrderStatus; i++) {
+				modifiedDate[i] = res->getString(i + 6);
+			}
+		}
+		order.description();
+		return order;
 	}
 }
