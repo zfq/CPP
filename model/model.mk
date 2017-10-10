@@ -1,6 +1,6 @@
 
 CC = g++
-CPPFLAGS = -c -std=c++11
+CPPFLAGS = -g -c -std=c++11
 
 
 all : baseMakefile utilsMakefile Comment.o DeliveryDriver.o Dish.o Order.o Reply.o Restaurant.o User.o RestaurantAgent.o

@@ -155,6 +155,52 @@ namespace zfq {
 		return v;
 	}
 	
+	std::list<Order> OrderDao::getOrders(long startOrderId, int number, bool ascending)
+	{
+		std::string sqlStr = "SELECT * FROM food_delivery_system_order WHERE orderId";
+		if (ascending) {
+			sqlStr +=( ">=" + std::to_string(startOrderId) + " ORDER BY orderId ASC LIMIT " + std::to_string(number) );
+		} else {
+			sqlStr +=( "<=" + std::to_string(startOrderId) + " ORDER BY orderId DESC LIMIT " + std::to_string(number) );
+		}
+		
+		try {
+			sql::Connection *conn = ConnectionProvider::getSqlConnection();
+			sql::Statement *stmt = conn->createStatement();;
+			sql::ResultSet  *res;
+			BaseDao::executeSql("USE foodDeleverSystem");
+
+			sql::SQLString sql(sqlStr);
+			res = stmt->executeQuery(sql);
+
+			std::list<Order> orderList;
+
+			while (res->next()) {
+				Order order;
+				order.setOrderId(res->getUInt64("orderId"));
+				order.setRestaurantId(res->getUInt64("restaurantId"));
+				order.setUserId(res->getUInt64("userId"));
+				order.setDeliveryDriverId(res->getUInt64("deliveryDriverId"));
+				order.setOrderStatus(static_cast<OrderStatus>(res->getUInt("orderStatus")));
+
+				//设置日期
+				std::string *modifiedDate = order.getStatusModifiedDate();
+				for (int i = 0; i < Order::NumberOfOrderStatus; i++) {
+					modifiedDate[i] = res->getString(i + 6);
+				}
+
+				order.description();
+				orderList.push_back(order);
+			}
+			return orderList;
+		} catch (sql::SQLException &e) {
+			std::cout << "orderDao出错了:" << e.what() << "\n" <<e.getSQLState() << "\n"; 
+		}
+		
+		std::list<Order> emptyList;
+		return emptyList;
+	}
+
 	const Order OrderDao::getById(long orderId)
 	{
 		sql::Connection *conn = ConnectionProvider::getSqlConnection();
@@ -180,7 +226,6 @@ namespace zfq {
 				modifiedDate[i] = res->getString(i + 6);
 			}
 		}
-		order.description();
 		return order;
 	}
 }

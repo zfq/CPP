@@ -1,4 +1,5 @@
 
+CPPFLAGS = -g -c -std=c++11
 allDao : baseMakefile modelMakefile BaseDao.o OrderDao.o
 
 baseMakefile:

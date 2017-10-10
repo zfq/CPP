@@ -26,7 +26,7 @@ namespace zfq {
 		bool update(const Order &order);
 		std::list<Order> getAll();
 		/* 从startOrderId起查询number个 */
-		std::list<Order> getOrders(long startOrderId, int number);
+		std::list<Order> getOrders(long startOrderId, int number, bool ascending);
 		const Order getById(long orderId);
 	};
 }

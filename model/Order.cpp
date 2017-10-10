@@ -11,7 +11,7 @@
 
 namespace zfq {
 	
-	Order::Order():BaseObject(),mOrderId(0),mRestaurantId(0),mUserId(0),mDeliveryDriverId(0),mOrderStatus(OrderStatusCreateSucceed)
+	Order::Order():BaseObject(),mOrderId(0),mRestaurantId(0),mUserId(0),mDeliveryDriverId(0),mOrderStatus(OrderStatusCreateSucceed),mStatusModifiedDate(NULL)
 	{
 		mStatusModifiedDate = new string[NumberOfOrderStatus];
 		for (int i = 0; i < NumberOfOrderStatus; i++) {
@@ -19,14 +19,17 @@ namespace zfq {
 		}
 	}
 	
-	Order::Order(const Order &order)
+	Order::Order(const Order &order):BaseObject(),mStatusModifiedDate(NULL)
 	{
 		initMemberVariables(order);
 	}
 	
 	Order::~Order()
 	{
-		delete[] mStatusModifiedDate;
+		if (mStatusModifiedDate != NULL) {
+			delete[] mStatusModifiedDate;
+			mStatusModifiedDate = NULL;
+		}
 	}
 	
 	void Order::initMemberVariables(const Order &order)

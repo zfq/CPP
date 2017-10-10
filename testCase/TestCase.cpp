@@ -299,12 +299,20 @@ namespace zfq {
 		// dao.createTable();
 
 		// Order order;
-		// order.setUserId(13122245);
+		// order.setOrderId(4);
+		// order.setUserId(4444);
 		// order.setDeliveryDriverId(3333);
-		// order.setRestaurantId(0);
-		// order.setOrderStatus(OrderStatusRestaurantAccepted);
+		// order.setRestaurantId(345);
+		// order.setOrderStatus(OrderStatusInDistribution);
+		// (order.getStatusModifiedDate())[0] = "2017-10-9 14:28:45";
 		// dao.insert(order);
-		dao.getById(4);
+
+		// dao.update(order);
+		// dao.getById(4);
+
+		// dao.remove(5);
+
+		dao.getOrders(3, 4, true);
 	}
 
 }
