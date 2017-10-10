@@ -189,7 +189,6 @@ namespace zfq {
 					modifiedDate[i] = res->getString(i + 6);
 				}
 
-				order.description();
 				orderList.push_back(order);
 			}
 			return orderList;

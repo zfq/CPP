@@ -1,6 +1,7 @@
 targetFileName = foodDeliverySysterm
 CC = g++
-CCFLAGES = -o
+# CCFLAGES = -o
+CPPFLAGS = -g -c -std=c++11
 # LIBDIR = /usr/local/lib thirdParty/mySqlConn/lib
 
 # objects = BaseObject.o Person.o main.o
@@ -51,7 +52,7 @@ objs = $(baseDirAllObjs) $(utilsDirAllObjs) $(modelDirAllObjs) $(daoDirAllObjs) 
 # objs := $(wildcard base/*.o) $(wildcard utils/*.o) $(wildcard model/*.o) main.o
 # -L thirdParty/mySqlConn/lib/libmysqlcppconn-static.a
 $(targetFileName) : modelMakefile daoMakefile testCaseMakefile $(objs)
-	g++ -L/usr/local/lib -lmysqlcppconn -o $@ $(filter %.o, $^)
+	g++ -g -Wall -L/usr/local/lib -lmysqlcppconn -o $@ $(filter %.o, $^)
 
 
 .PHONY:modelMakefile

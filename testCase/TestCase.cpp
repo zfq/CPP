@@ -312,7 +312,11 @@ namespace zfq {
 
 		// dao.remove(5);
 
-		dao.getOrders(3, 4, true);
+		std::list<Order> orderList = dao.getOrders(3, 10, true);
+		std::cout << "=======\n";
+		for (std::list<Order>::iterator i = orderList.begin(); i != orderList.end(); i++) {
+			static_cast<Order>(*i).description();
+		}
 	}
 
 }
